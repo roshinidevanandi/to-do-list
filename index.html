@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sub{
+            background-color: rgb(187, 42, 67);
+            color: white;
+            border: 3px solid rgb(187, 42, 67);
+        }
+    </style>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="ip" placeholder="add a todo">
+        <input type="submit" value="add" id="sub">
+    </form>
+    <ul id="list"></ul> 
+    <script>
+        let form=document.getElementById("form")
+        let ip=document.getElementById("ip")
+        let list=document.getElementById("list")
+        ip.style.border="3px solid green"
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            let listItem=document.createElement("li")
+            listItem.innerText=ip.value + "   "
+            listItem.style.color="red"
+            listItem.style.fontSize="25px"
+            let btn=document.createElement("button")
+            btn.style.backgroundColor="blue"
+            btn.style.color="white"
+            btn.style.border="none"
+            btn.addEventListener("click",()=>{
+                list.removeChild(listItem)
+            })
+            btn.innerText="DELETE";
+            listItem.appendChild(btn);
+            list.appendChild(listItem);
+            ip.value=""
+        })
+    </script>
+</body>
+</html>
